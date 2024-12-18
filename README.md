@@ -54,8 +54,4 @@ if ($firstLine -notmatch "(?i)^<!DOCTYPE html>") {
 Write-Host "✅ Validación completada: El archivo index.html es válido." -ForegroundColor Green
 exit 0
 
---- 
- 📜 **Código del Hook pre-commit.ps1**
- Ejecutando validación del archivo HTML...**
-Primera línea del archivo: '<!DOCTYPE html>'
-✅ Validación completada: El archivo index.html es válido.
+![CAPTURA DE PANTALLA](images/PAGINAW.png)
