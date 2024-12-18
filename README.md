@@ -28,6 +28,8 @@ El hook realiza lo siguiente:
 
 ---
 
+![CAPTURA DE PANTALLA](/images/PAGINAW.png)
+
 ## 📜 **Código del Hook pre-commit.ps1**
 
 Este es el contenido del script `pre-commit.ps1`:
@@ -54,6 +56,5 @@ if ($firstLine -notmatch "(?i)^<!DOCTYPE html>") {
 Write-Host "✅ Validación completada: El archivo index.html es válido." -ForegroundColor Green
 exit 0
 
---- 
 
-![CAPTURA DE PANTALLA](/images/PAGINAW.png)
+
