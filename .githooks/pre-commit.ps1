@@ -1,26 +1,23 @@
-#!/bin/bash
+Write-Host "Ejecutando validación del archivo HTML..." -ForegroundColor Cyan
 
-# Script pre-commit para validar index.html
-
-echo "Ejecutando validación del archivo HTML..."
-
-# Verificar si existe el archivo index.html
-if [ ! -f "index.html" ]; then
-    echo "❌ Error: No se encontró index.html. No se puede hacer commit."
+# Verificar si el archivo index.html existe
+if (!(Test-Path "index.html")) {
+    Write-Error "❌ Error: No se encontró index.html. No se puede hacer commit."
     exit 1
-fi
+}
 
-# Validar si el archivo contiene la etiqueta <!DOCTYPE html>
-if ! grep -q "<!DOCTYPE html>" index.html; then
-    echo "❌ Error: El archivo index.html no contiene la etiqueta <!DOCTYPE html>."
+# Validar contenido del archivo index.html
+$indexContent = Get-Content "index.html"
+
+if ($indexContent -notmatch "<!DOCTYPE html>") {
+    Write-Error "❌ Error: El archivo index.html no contiene <!DOCTYPE html>."
     exit 1
-fi
+}
 
-# Validar que el archivo contiene la etiqueta de cierre </html>
-if ! grep -q "</html>" index.html; then
-    echo "❌ Error: El archivo index.html no contiene la etiqueta de cierre </html>."
+if ($indexContent -notmatch "</html>") {
+    Write-Error "❌ Error: El archivo index.html no contiene </html>."
     exit 1
-fi
+}
 
-echo "✅ Validación completada: El archivo index.html es válido. Commit permitido."
+Write-Host "✅ Validación completada: El archivo index.html es válido." -ForegroundColor Green
 exit 0
